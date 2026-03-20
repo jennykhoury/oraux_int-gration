@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oraux de Spécialité Mathématiques - Intégrales</title>
+    <!-- Google Fonts pour une typographie premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- MathJax pour le rendu LaTeX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- HEADER -->
+        <header class="navbar">
+            <div class="logo">
+                <span class="logo-icon">∫</span> Oraux Spé Maths
+            </div>
+            <div class="header-info">
+                <span>Thème : Intégrales & Suites</span>
+            </div>
+        </header>
+
+        <!-- MAIN LAYOUT -->
+        <main class="main-content">
+            
+            <!-- LEFT PANEL : SUBJECT SELECTION -->
+            <aside class="sidebar" id="sidebar">
+                <h2>Banque de Sujets</h2>
+                <p class="subtitle">Sélectionnez un sujet ou tirez au sort.</p>
+                <button id="random-btn" class="btn-primary">🎲 Tirage au sort</button>
+                
+                <div class="grid-subjects" id="grid-subjects">
+                    <!-- Généré dynamiquement en JS (Boutons 1 à 36) -->
+                </div>
+            </aside>
+
+            <!-- RIGHT PANEL : SUBJECT DISPLAY -->
+            <section class="viewer-area">
+                <div class="subject-card hidden" id="subject-card">
+                    <div class="card-header">
+                        <h1 id="subject-title">Sujet N°1</h1>
+                        <div class="timer-container" id="timer-container">
+                            <span class="timer-icon">⏱</span>
+                            <span id="timer-display">15:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body" id="subject-content">
+                        <!-- Questions injectées en JS -->
+                        <div class="question-block">
+                            <h3>Question 1</h3>
+                            <p id="q1-text">Texte de la question 1...</p>
+                        </div>
+                        <div class="question-block">
+                            <h3>Question 2</h3>
+                            <p id="q2-text">Texte de la question 2...</p>
+                        </div>
+                        
+                        <!-- Correction Toggle -->
+                        <div class="correction-section">
+                            <button id="toggle-correction-btn" class="btn-outline">Afficher la correction</button>
+                            <div id="correction-content" class="correction-content hidden">
+                                <h3>Éléments de correction</h3>
+                                <p id="correction-text"></p>
+                            </div>
+                        </div>
+
+                        <!-- Évaluation -->
+                        <div class="evaluation-grid">
+                            <h3>Grille d'évaluation automatique</h3>
+                            <div class="eval-row"><label><input type="checkbox" class="eval-checkbox" value="1"> Démarche de calcul correcte (Q1) - 1 pt</label></div>
+                            <div class="eval-row"><label><input type="checkbox" class="eval-checkbox" value="1.5"> Résultat final exact (Q1) - 1.5 pts</label></div>
+                            <div class="eval-row"><label><input type="checkbox" class="eval-checkbox" value="1.5"> Raisonnement logique et justification (Q2) - 1.5 pts</label></div>
+                            <div class="eval-row"><label><input type="checkbox" class="eval-checkbox" value="1"> Conclusion finale exacte (Q2) - 1 pt</label></div>
+                            <div class="score-display">Note : <span id="total-score">0.0</span> / 5</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <button id="start-timer-btn" class="btn-secondary">▶ Démarrer le chrono (15 min)</button>
+                        <button id="reset-timer-btn" class="btn-secondary hidden">↺ Réinitialiser</button>
+                    </div>
+                </div>
+                
+                <div class="placeholder-message" id="placeholder-message">
+                    <p>Veuillez sélectionner un sujet pour commencer l'épreuve.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="subjects.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
