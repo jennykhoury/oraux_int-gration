@@ -50,7 +50,7 @@ const SUBJECTS = [
     {
         id: 9,
         q1: "Calculer l'intégrale \\( K = \\int_{1}^{e} \\frac{\\ln(x)}{x} \\, dx \\).",
-        q2: "Les primitives d'une même fonction continte \\( f \\) sont-elles uniques ? Expliquer mathématiquement en quoi elles diffèrent.",
+        q2: "Les primitives d'une même fonction continue \\( f \\) sont-elles uniques ? Expliquer mathématiquement en quoi elles diffèrent.",
         correction: "<strong>Q1:</strong> \\( \\frac{\\ln(x)}{x} = \\frac{1}{x} \\ln(x) = u' \\times u \\). La primitive est donc \\( \\frac{1}{2} (\\ln x)^2 \\). Entre 1 et \\( e \\), cela donne \\( \\frac{1}{2}(1^2 - 0) = \\frac{1}{2} \\).<br/><br/><strong>Q2:</strong> Non, une fonction continue admet une infinité de primitives. Si \\( F \\) est une primitive de \\( f \\), alors toute autre primitive \\( G \\) peut s'écrire sous la forme \\( G(x) = F(x) + k \\) où \\( k \\) est une constante réelle. Elles ne diffèrent que par cette constante."
     },
     {
