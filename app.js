@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomBtn = document.getElementById('random-btn');
     const subjectCard = document.getElementById('subject-card');
     const placeholder = document.getElementById('placeholder-message');
-    
+
     const titleEl = document.getElementById('subject-title');
     const q1El = document.getElementById('q1-text');
     const q2El = document.getElementById('q2-text');
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reset previously active button
         const btns = document.querySelectorAll('.subject-btn');
         btns.forEach(b => b.classList.remove('active'));
-        
+
         // Highlight current button
         const activeBtn = document.querySelector(`.subject-btn[data-id="${id}"]`);
         if (activeBtn) activeBtn.classList.add('active');
@@ -79,12 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
         titleEl.innerText = `Sujet N°${subject.id}`;
         q1El.innerHTML = subject.q1;
         q2El.innerHTML = subject.q2;
-        
+
         // Populate correction & Reset Evaluation UI
         correctionText.innerHTML = subject.correction || "Correction en cours de rédaction...";
         correctionContent.classList.add('hidden');
         toggleCorrectionBtn.innerText = "Afficher la correction";
-        
+
         evalCheckboxes.forEach(cb => cb.checked = false);
         totalScoreEl.innerText = "0.0";
 
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const m = Math.floor(timeLeft / 60);
         const s = timeLeft % 60;
         timerDisplay.innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-        
+
         if (timeLeft <= 300) { // last 5 minutes
             timerContainer.classList.add('urgent');
             timerContainer.classList.remove('running');
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             startBtn.classList.add('hidden');
             resetBtn.classList.remove('hidden');
             timerContainer.classList.add('running');
-            
+
             timerInterval = setInterval(() => {
                 timeLeft--;
                 updateTimerDisplay();
@@ -158,4 +158,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial display
     updateTimerDisplay();
+
+    // --- SCROLL NAVIGATION ---
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
+    const viewerArea = document.querySelector('.viewer-area');
+
+    if (scrollToTopBtn && scrollToBottomBtn) {
+        scrollToTopBtn.addEventListener('click', () => {
+            try {
+                if (viewerArea) viewerArea.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch(e) {
+                if (viewerArea) viewerArea.scrollTop = 0;
+            }
+        });
+
+        scrollToBottomBtn.addEventListener('click', () => {
+            try {
+                if (viewerArea) viewerArea.scrollTo({ top: viewerArea.scrollHeight, behavior: 'smooth' });
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            } catch(e) {
+                if (viewerArea) viewerArea.scrollTop = viewerArea.scrollHeight;
+            }
+        });
+    }
 });
